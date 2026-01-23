@@ -177,65 +177,6 @@
       height:100%;
       object-fit:contain;
     }
-    .pip-recording-badge{
-      position:absolute;
-      top:12px;
-      left:12px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-      background:rgba(0,0,0,.6);
-      backdrop-filter:blur(8px);
-      padding:6px 12px;
-      border-radius:999px;
-      font-size:13px;
-      color:#fff;
-    }
-    .pip-recording-dot{
-      width:10px;
-      height:10px;
-      border-radius:50%;
-      background:#ff4d4d;
-      animation:pulse 1.5s ease-in-out infinite;
-    }
-    @keyframes pulse{
-      0%,100%{opacity:1}
-      50%{opacity:.4}
-    }
-    .pip-controls{
-      display:flex;
-      justify-content:center;
-      padding:16px;
-      gap:12px;
-      background:rgba(0,0,0,.4);
-    }
-    .pip-stop-btn{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      padding:12px 24px;
-      border-radius:999px;
-      background:#ff4d4d;
-      border:none;
-      color:#fff;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer;
-      transition: transform .15s ease, background .15s ease;
-    }
-    .pip-stop-btn:hover{
-      transform:scale(1.04);
-      background:#ff3333;
-    }
-    .pip-stop-btn:active{
-      transform:scale(.96);
-    }
-    .pip-stop-icon{
-      width:16px;
-      height:16px;
-      background:#fff;
-      border-radius:3px;
-    }
 
     /* ========== Start Screen (Figma design) ========== */
     .start-screen{
@@ -244,6 +185,7 @@
       align-items:center;
       justify-content:center;
       min-height:100vh;
+      transition:padding-top 0.2s ease;
     }
     .start-card{
       background:#fff;
@@ -312,10 +254,12 @@
       color:#114435;
     }
     .mode-label{
-      font-size:16px;
+      font-size:15px;
       font-weight:500;
       color:#1c2024;
       line-height:24px;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing:-0.2px;
     }
     .mode-card.selected .mode-label{
       color:#114435;
@@ -330,10 +274,12 @@
       border:none;
       background:#7cedc7;
       color:#1c2024;
-      font-size:18px;
+      font-size:17px;
       font-weight:500;
       cursor:pointer;
       transition: all 0.15s ease;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing:-0.2px;
     }
     .start-btn:hover{
       background:#6de0ba;
@@ -422,6 +368,140 @@
       color:rgba(0,0,0,0.5);
     }
 
+    /* ========== Recording Preview Screen ========== */
+    .recording-preview-screen{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width:100%;
+      height:100%;
+    }
+    .recording-preview-card{
+      background:#fff;
+      border:0.5px solid rgba(0,0,0,0.02);
+      border-radius:18px;
+      box-shadow:
+        0 0 1px 0 rgba(0,0,0,0.27),
+        0 0 0 1px rgba(0,0,0,0.01),
+        0 1px 3px 0 rgba(0,0,0,0.09),
+        0 1px 2px 0 rgba(0,0,0,0.02);
+      width:900px;
+      height:600px;
+      display:flex;
+      flex-direction:column;
+      overflow:hidden;
+    }
+    .recording-preview-content{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:0 40px;
+    }
+    .recording-preview-section{
+      width:554px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+    .recording-preview-controls{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:16px;
+      padding:32px 40px;
+      border-top:1px solid rgba(0,0,0,0.06);
+    }
+    .recording-preview-video-wrap{
+      width:100%;
+      aspect-ratio:600/338;
+      border-radius:18px;
+      overflow:hidden;
+      position:relative;
+      background:#000;
+    }
+    .recording-preview-video-wrap video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .recording-preview-darken{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.3);
+      z-index:1;
+    }
+    .recording-preview-overlay{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      z-index:2;
+    }
+    .recording-preview-status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .recording-preview-indicator{
+      width:18px;
+      height:18px;
+      border-radius:50%;
+      background:#ff4d4d;
+      animation:pulse 1.5s ease-in-out infinite;
+      box-shadow:0 0 0 4px rgba(255,77,77,0.25);
+    }
+    .recording-preview-label{
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+      font-size:28px;
+      font-weight:500;
+      color:rgba(255,255,255,0.9);
+      text-shadow:0 1px 4px rgba(0,0,0,0.4);
+    }
+    .recording-preview-timer{
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+      font-variant-numeric:tabular-nums;
+      font-size:28px;
+      font-weight:500;
+      color:rgba(255,255,255,0.9);
+      text-shadow:0 1px 4px rgba(0,0,0,0.4);
+    }
+    .recording-preview-stop-btn{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      height:48px;
+      padding:0 32px;
+      border-radius:12px;
+      background:#ff4d4d;
+      border:none;
+      color:#fff;
+      font-size:17px;
+      font-weight:500;
+      cursor:pointer;
+      transition:all 0.15s ease;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+      letter-spacing:-0.2px;
+    }
+    .recording-preview-stop-btn:hover{
+      background:#ff3333;
+      transform:translateY(-1px);
+    }
+    .recording-preview-stop-btn:active{
+      transform:translateY(0);
+    }
+    .recording-preview-stop-icon{
+      width:16px;
+      height:16px;
+      background:#fff;
+      border-radius:4px;
+    }
+
     /* Light theme toast override for start screen */
     .start-card .toast{
       background:rgba(0,0,0,0.05);
@@ -439,6 +519,159 @@
       bottom:64px;
       left:50%;
       transform:translateX(-50%);
+    }
+
+    /* ========== Return to Tab Banner ========== */
+    .return-banner{
+      position:fixed;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      z-index:1000;
+      background:#f9f9f9;
+      display:none;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      padding:40px 24px;
+      gap:24px;
+    }
+    .return-banner.show{
+      display:flex;
+    }
+    .return-banner-content{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:24px;
+      max-width:900px;
+      width:100%;
+    }
+    .return-banner-header{
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:16px;
+      margin-bottom:8px;
+    }
+    .return-banner-text{
+      text-align:center;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:8px;
+    }
+    .return-banner-title{
+      font-size:28px;
+      font-weight:600;
+      color:#1c2024;
+      margin:0 0 8px;
+      line-height:36px;
+      letter-spacing:-0.21px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .return-banner-icon{
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:#ff4d4d;
+      animation:pulse 1.5s ease-in-out infinite;
+      flex-shrink:0;
+    }
+    .return-banner-subtitle{
+      font-size:16px;
+      color:rgba(0,0,0,0.6);
+      margin:0;
+      line-height:24px;
+    }
+    .return-banner-preview{
+      width:100%;
+      max-width:600px;
+      aspect-ratio:16/9;
+      border-radius:18px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,0.1);
+      background:#000;
+      position:relative;
+      box-shadow:0 2px 8px rgba(0,0,0,0.1);
+    }
+    .return-banner-preview video{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+    .return-banner-preview-badge{
+      position:absolute;
+      top:12px;
+      right:12px;
+      background:rgba(0,0,0,0.7);
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      padding:4px 8px;
+      border-radius:6px;
+      backdrop-filter:blur(4px);
+    }
+    .return-banner-actions{
+      display:flex;
+      gap:12px;
+      width:100%;
+      max-width:400px;
+      margin-top:8px;
+    }
+    .return-banner-btn{
+      flex:1;
+      height:48px;
+      padding:0 24px;
+      border-radius:12px;
+      border:none;
+      font-size:17px;
+      font-weight:500;
+      cursor:pointer;
+      transition:all 0.15s ease;
+      font-family:"Inter",-apple-system,BlinkMacSystemFont,sans-serif;
+      letter-spacing:-0.2px;
+    }
+    .return-banner-btn-continue{
+      background:rgba(255,255,255,0.8);
+      color:#1c2024;
+      border:1px solid rgba(0,0,0,0.19);
+    }
+    .return-banner-btn-continue:hover{
+      background:#fff;
+      border-color:rgba(0,0,0,0.3);
+    }
+    .return-banner-btn-stop{
+      background:#ff4d4d;
+      color:#fff;
+    }
+    .return-banner-btn-stop:hover{
+      background:#ff3333;
+    }
+    @media (max-width:768px){
+      .return-banner{
+        padding:24px 16px;
+      }
+      .return-banner-content{
+        gap:20px;
+      }
+      .return-banner-title{
+        font-size:24px;
+        line-height:32px;
+      }
+      .return-banner-subtitle{
+        font-size:14px;
+      }
+      .return-banner-actions{
+        flex-direction:column;
+        max-width:100%;
+      }
+      .return-banner-btn{
+        width:100%;
+      }
     }
 
     /* ========== Review Screen ========== */
@@ -501,6 +734,7 @@
       justify-content:center;
       gap:16px;
       transition:opacity 0.2s;
+      z-index:2;
     }
     .video-overlay.hidden{
       opacity:0;
@@ -538,6 +772,16 @@
         0 0 1px 0 rgba(255,255,255,0.33),
         0 1px 3px 0 rgba(255,255,255,0.11);
     }
+    .video-gradient-overlay{
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      pointer-events:none;
+      background:linear-gradient(to bottom, transparent 0%, transparent 66.67%, rgba(0,0,0,0.30) 100%);
+      z-index:1;
+    }
     .video-progress{
       position:absolute;
       bottom:0;
@@ -545,6 +789,7 @@
       right:0;
       padding:12px;
       background:linear-gradient(to bottom, rgba(0,0,0,0.01), rgba(0,0,0,0.49));
+      z-index:3;
     }
     .progress-bar{
       position:relative;
@@ -618,10 +863,12 @@
       border:1px solid rgba(0,0,0,0.19);
       background:rgba(255,255,255,0.8);
       color:#646464;
-      font-size:18px;
+      font-size:17px;
       font-weight:500;
       cursor:pointer;
       transition:all 0.15s;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing:-0.2px;
     }
     .redo-btn:hover{
       background:#fff;
@@ -634,10 +881,12 @@
       border:none;
       background:#7cedc7;
       color:#1c2024;
-      font-size:18px;
+      font-size:17px;
       font-weight:500;
       cursor:pointer;
       transition:all 0.15s;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing:-0.2px;
     }
     .submit-btn:hover:not(:disabled){
       background:#6de0ba;
@@ -671,19 +920,27 @@
 
 <script>
 (function(){
-  const params = new URLSearchParams(location.search);
-  const mode = params.get("mode") || "link"; // link | pip | review
-  const app = document.getElementById("app");
-  const modePill = document.getElementById("modePill");
-  modePill.textContent = mode === "pip" ? "PIP window" : mode === "review" ? "Review tab" : "Recording link";
+  try {
+    const params = new URLSearchParams(location.search);
+    const mode = params.get("mode") || "link"; // link | pip | review
+    const app = document.getElementById("app");
+    if (!app) {
+      console.error("App element not found!");
+      document.body.innerHTML = "<div style='padding: 20px; color: red;'>Error: App element not found</div>";
+      return;
+    }
+    const modePill = document.getElementById("modePill");
+    if (modePill) {
+      modePill.textContent = mode === "pip" ? "PIP window" : mode === "review" ? "Review tab" : "Recording link";
+    }
 
-  const channelName = "jam_pip_recording_proto_v1";
-  const bc = new BroadcastChannel(channelName);
+    const channelName = "jam_pip_recording_proto_v1";
+    const bc = new BroadcastChannel(channelName);
 
   // ---------- Shared helpers ----------
   const fmtTime = (sec) => {
     sec = Math.max(0, Math.floor(sec));
-    const m = String(Math.floor(sec/60)).padStart(2,"0");
+    const m = Math.floor(sec/60);
     const s = String(sec%60).padStart(2,"0");
     return `${m}:${s}`;
   };
@@ -703,7 +960,14 @@
 
   function openReviewTab(){
     const url = `${location.pathname}?mode=review`;
-    return window.open(url, "_blank");
+    console.log(`[openReviewTab] Attempting to open: ${url}`);
+    const newWindow = window.open(url, "_blank");
+    if (newWindow) {
+      console.log("[openReviewTab] Window opened successfully");
+    } else {
+      console.error("[openReviewTab] BLOCKED! window.open() returned null - popup blocker likely blocked it");
+    }
+    return newWindow;
   }
 
   // ---------- MODE: LINK (the recording link landing) ----------
@@ -712,6 +976,29 @@
     let selectedMode = "screen-voice"; // "screen-voice" or "screen-only"
 
     app.innerHTML = `
+      <!-- Return to Tab Banner (hidden initially) -->
+      <div class="return-banner" id="returnBanner">
+        <div class="return-banner-content">
+          <div class="return-banner-header">
+            <div class="return-banner-text">
+              <div class="return-banner-title">
+                <span class="return-banner-icon"></span>
+                You are currently recording
+              </div>
+              <div class="return-banner-subtitle">Make sure this is the screen you want to record</div>
+            </div>
+          </div>
+          <div class="return-banner-preview">
+            <video id="returnBannerPreview" autoplay muted playsinline></video>
+            <div class="return-banner-preview-badge">LIVE</div>
+          </div>
+          <div class="return-banner-actions">
+            <button class="return-banner-btn return-banner-btn-continue" id="continueRecordingBtn">Continue recording</button>
+            <button class="return-banner-btn return-banner-btn-stop" id="stopFromBannerBtn">Stop recording</button>
+          </div>
+        </div>
+      </div>
+
       <div class="start-screen">
         <div class="start-card">
           <h1 class="start-heading">Get ready to record</h1>
@@ -745,18 +1032,35 @@
             <button class="start-btn" id="startPipBtn">Start recording</button>
           </div>
 
-          <!-- Recording active state (hidden initially) -->
-          <div id="recordingControls" style="display:none">
-            <div class="recording-status">
-              <span class="rec-dot"></span>
-              <span class="rec-timer mono" id="recordingTimer">00:00</span>
-            </div>
-            <button class="stop-btn" id="stopRecordingBtn">Stop recording</button>
-            <div class="rec-hint" id="recordingHint">Use the floating PIP window or this button to stop</div>
-          </div>
-
           <div class="toast" id="toast"></div>
 
+        </div>
+
+        <!-- Recording active state (hidden initially, outside start-card) -->
+        <div id="recordingControls" style="display:none">
+          <div class="recording-preview-card">
+            <div class="recording-preview-content">
+              <div class="recording-preview-section">
+                <div class="recording-preview-video-wrap">
+                  <video id="recordingPreviewVideo" autoplay muted playsinline></video>
+                  <div class="recording-preview-darken"></div>
+                  <div class="recording-preview-overlay">
+                    <div class="recording-preview-status">
+                      <div class="recording-preview-indicator"></div>
+                      <span class="recording-preview-label">Recording</span>
+                      <span class="recording-preview-timer" id="recordingPreviewTimer">0:00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="recording-preview-controls">
+              <button class="recording-preview-stop-btn" id="recordingPreviewStopBtn">
+                <div class="recording-preview-stop-icon"></div>
+                <span>Stop recording</span>
+              </button>
+            </div>
+          </div>
         </div>
 
         <div class="start-footer">
@@ -784,6 +1088,113 @@
     app.style.border = "none";
     app.style.boxShadow = "none";
 
+    // Return to tab banner state (declare before use)
+    let returnBanner = null;
+    let returnBannerPreview = null;
+    let continueRecordingBtn = null;
+    let stopFromBannerBtn = null;
+    let tabWasHidden = false;
+    let bannerDismissed = false;
+
+    // Initialize return banner elements
+    returnBanner = document.getElementById("returnBanner");
+    returnBannerPreview = document.getElementById("returnBannerPreview");
+    continueRecordingBtn = document.getElementById("continueRecordingBtn");
+    stopFromBannerBtn = document.getElementById("stopFromBannerBtn");
+
+    // Page Visibility API - detect when user returns to tab
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) {
+        // Tab was hidden
+        tabWasHidden = true;
+        console.log("[Visibility] Tab hidden");
+      } else {
+        // Tab became visible - show preview screen if recording is active
+        if (tabWasHidden && recorder && recorder.state !== "inactive" && !bannerDismissed) {
+          // User returned while recording is active - show the preview screen
+          console.log("[Visibility] Tab visible - showing preview screen");
+          showReturnBanner();
+        }
+        tabWasHidden = false;
+      }
+    });
+
+    // Show return banner
+    function showReturnBanner() {
+      if (!returnBanner || !mainWindowStream) return;
+
+      // Set up preview video with recording stream
+      if (returnBannerPreview && mainWindowStream) {
+        returnBannerPreview.srcObject = mainWindowStream;
+        returnBannerPreview.play().catch(err => {
+          console.error("[Return Banner] Preview play error:", err);
+        });
+      }
+
+      returnBanner.classList.add("show");
+
+      // Hide the start screen content when banner is shown
+      const startScreen = document.querySelector(".start-screen");
+      const startCard = document.querySelector(".start-card");
+      if (startScreen) {
+        startScreen.style.display = "none";
+      }
+      if (startCard) {
+        startCard.style.display = "none";
+      }
+    }
+
+    // Hide return banner
+    function hideReturnBanner() {
+      if (!returnBanner) return;
+
+      returnBanner.classList.remove("show");
+      bannerDismissed = true;
+
+      // Show the start screen again
+      const startScreen = document.querySelector(".start-screen");
+      if (startScreen) {
+        startScreen.style.display = "flex";
+      }
+
+      // Only show start card if NOT recording - if recording, keep showing recordingControls
+      const recordingControlsEl = document.getElementById("recordingControls");
+      const startCard = document.querySelector(".start-card");
+      if (recorder && recorder.state !== "inactive") {
+        // Recording is active - show preview, hide start card
+        if (startCard) startCard.style.display = "none";
+        if (recordingControlsEl) recordingControlsEl.style.display = "block";
+      } else {
+        // Not recording - show start card
+        if (startCard) startCard.style.display = "flex";
+        if (recordingControlsEl) recordingControlsEl.style.display = "none";
+      }
+
+      // Pause preview video (don't stop tracks - they're shared with recording)
+      if (returnBannerPreview) {
+        returnBannerPreview.pause();
+        returnBannerPreview.srcObject = null;
+      }
+    }
+
+    // Continue recording button
+    if (continueRecordingBtn) {
+      continueRecordingBtn.onclick = () => {
+        hideReturnBanner();
+      };
+    }
+
+    // Stop from banner button
+    if (stopFromBannerBtn) {
+      stopFromBannerBtn.onclick = () => {
+        if (recorder && recorder.state !== "inactive") {
+          stopFromBannerBtn.disabled = true;
+          recorder.stop();
+        }
+        hideReturnBanner();
+      };
+    }
+
     // Mode selection handlers
     const modeScreenVoice = document.getElementById("modeScreenVoice");
     const modeScreenOnly = document.getElementById("modeScreenOnly");
@@ -804,16 +1215,19 @@
     // Get PIP styles from main document
     function getPipStyles() {
       const styleEl = document.createElement("style");
-      // Extract only the PIP-related styles
+      // PIP styles - updated design
       styleEl.textContent = `
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500;600&display=swap');
         *{box-sizing:border-box;margin:0;padding:0}
-        html,body{height:100%;overflow:hidden}
+        html,body{height:100%;overflow:hidden;background:#1a1a1a}
         .pip-container{
           display:flex;
           flex-direction:column;
           height:100%;
-          background:#0b0c10;
-          font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+          background:#1a1a1a;
+          font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+          overflow:hidden;
+          position:relative;
         }
         .pip-video-wrap{
           flex:1;
@@ -821,21 +1235,40 @@
           display:flex;
           align-items:center;
           justify-content:center;
-          background:#0b0c10;
-          padding:16px;
+          padding:24px;
         }
         .pip-video-frame{
           position:relative;
-          border-radius:18px;
+          height:200px;
+          border-radius:10.8px;
           overflow:hidden;
-          box-shadow:0 0 0 3px rgba(255,255,255,0.12), 0 4px 20px rgba(0,0,0,0.4);
+        }
+        .pip-video-frame::before{
+          content:'';
+          position:absolute;
+          top:0;
+          left:0;
+          right:0;
+          bottom:0;
+          background:rgba(0,0,0,0.45);
+          z-index:5;
+          pointer-events:none;
         }
         .pip-video-frame video{
           display:block;
           width:100%;
           height:100%;
+          object-fit:cover;
+          background:#000;
         }
-        .pip-recording-badge{
+        .pip-video-gradient-overlay{
+          display:none;
+        }
+        @keyframes pulse{
+          0%,100%{opacity:1}
+          50%{opacity:.4}
+        }
+        .pip-status-overlay{
           position:absolute;
           top:50%;
           left:50%;
@@ -843,112 +1276,114 @@
           z-index:10;
           display:flex;
           align-items:center;
-          gap:10px;
-          background:rgba(0,0,0,.6);
-          backdrop-filter:blur(8px);
-          padding:8px 16px;
-          border-radius:999px;
-          font-size:18px;
-          font-weight:500;
-          color:#fff;
+          gap:9.6px;
+          height:23px;
+          pointer-events:none;
         }
-        .pip-recording-dot{
-          width:10px;
-          height:10px;
+        .pip-toolbar-overlay{
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          gap:12px;
+          padding:24px 25px;
+          background:transparent;
+        }
+        .pip-toolbar-indicator{
+          width:12px;
+          height:12px;
           border-radius:50%;
-          background:#ff4d4d;
+          background:#E5484D;
           animation:pulse 1.5s ease-in-out infinite;
         }
-        @keyframes pulse{
-          0%,100%{opacity:1}
-          50%{opacity:.4}
+        .pip-toolbar-timer{
+          font-family:"Inter", sans-serif;
+          font-variant-numeric:tabular-nums;
+          font-size:20px;
+          font-weight:600;
+          color:#fff;
+          line-height:1.4;
+          letter-spacing:-0.005em;
         }
-        .pip-controls{
+        .pip-toolbar-right{
           display:flex;
-          justify-content:center;
-          padding:16px;
+          align-items:center;
           gap:12px;
-          background:rgba(0,0,0,.4);
         }
-        .pip-stop-btn{
+        .pip-toolbar-btn{
+          width:40px;
+          height:40px;
+          border:none;
+          background:rgba(255,255,255,0.07);
+          display:flex;
+          align-items:center;
+          justify-content:center;
+          cursor:pointer;
+          border-radius:9px;
+          transition: background .15s ease, transform .15s ease;
+          padding:0;
+        }
+        .pip-toolbar-btn:hover{
+          background:rgba(255,255,255,0.12);
+        }
+        .pip-toolbar-btn:active{
+          transform:scale(.95);
+        }
+        .pip-toolbar-btn svg{
+          width:20px;
+          height:20px;
+          color:rgba(255,255,255,0.69);
+          stroke:currentColor;
+          fill:none;
+          stroke-width:2;
+          stroke-linecap:round;
+          stroke-linejoin:round;
+        }
+        .pip-toolbar-mute-btn.muted{
+          background:rgba(229,72,77,0.3);
+        }
+        .pip-toolbar-mute-btn.muted:hover{
+          background:rgba(229,72,77,0.45);
+        }
+        .pip-toolbar-done-btn{
           position:relative;
           display:flex;
           align-items:center;
-          gap:10px;
-          padding:12px 24px;
-          border-radius:999px;
-          background:#ff4d4d;
+          justify-content:center;
+          gap:12px;
+          height:40px;
+          padding:0 16px;
+          border-radius:9px;
+          background:#E5484D;
           border:none;
           color:#fff;
-          font-size:15px;
-          font-weight:600;
+          font-family:"Inter", sans-serif;
+          font-size:16px;
+          font-weight:500;
+          line-height:1.5;
           cursor:pointer;
           transition: transform .15s ease, background .15s ease;
           overflow:hidden;
         }
-        .pip-stop-btn:hover{
-          transform:scale(1.04);
-          background:#ff3333;
+        .pip-toolbar-done-btn:hover{
+          background:#dc3d42;
         }
-        .pip-stop-btn:active{
-          transform:scale(.96);
+        .pip-toolbar-done-btn:active{
+          transform:scale(.98);
         }
-        .pip-stop-icon{
-          width:16px;
-          height:16px;
+        .pip-toolbar-done-icon{
+          width:18px;
+          height:18px;
           background:#fff;
-          border-radius:3px;
+          border-radius:4px;
           position:relative;
           z-index:1;
         }
-        .pip-stop-btn span{
+        .pip-toolbar-done-btn span{
           position:relative;
           z-index:1;
         }
         .pip-waveform{
-          position:absolute;
-          bottom:0;
-          left:0;
-          right:0;
-          height:100%;
-          pointer-events:none;
-        }
-        .pip-waveform svg{
-          width:100%;
-          height:100%;
-        }
-        .pip-timer{
-          font-variant-numeric:tabular-nums;
-        }
-        .pip-mute-btn{
-          width:44px;
-          height:44px;
-          border-radius:50%;
-          background:rgba(255,255,255,0.15);
-          border:none;
-          display:flex;
-          align-items:center;
-          justify-content:center;
-          cursor:pointer;
-          transition: transform .15s ease, background .15s ease;
-        }
-        .pip-mute-btn:hover{
-          transform:scale(1.08);
-          background:rgba(255,255,255,0.25);
-        }
-        .pip-mute-btn:active{
-          transform:scale(.95);
-        }
-        .pip-mute-btn svg{
-          width:20px;
-          height:20px;
-          color:#fff;
-        }
-        .pip-mute-btn.muted{
-          background:rgba(255,77,77,0.3);
-        }
-        .pip-mute-btn.muted:hover{
-          background:rgba(255,77,77,0.45);
+          display:none;
         }
       `;
       return styleEl;
@@ -965,8 +1400,11 @@
         // Request the PIP window
         pipWindow = await documentPictureInPicture.requestWindow({
           width: 400,
-          height: 300,
+          height: 309,
         });
+
+        // Set the PIP window title
+        pipWindow.document.title = "Recording your screen";
 
         // Add styles to PIP window
         pipWindow.document.head.appendChild(getPipStyles());
@@ -990,14 +1428,12 @@
         pipVideo.muted = true;
         pipVideo.srcObject = stream;
 
-        // Create recording badge
-        const badge = pipWindow.document.createElement("div");
-        badge.className = "pip-recording-badge";
-        badge.id = "pipBadge";
-        badge.innerHTML = `<div class="pip-recording-dot"></div><span class="pip-timer" id="pipTimer">00:00</span>`;
+        // Create gradient overlay
+        const gradientOverlay = pipWindow.document.createElement("div");
+        gradientOverlay.className = "pip-video-gradient-overlay";
 
         videoFrame.appendChild(pipVideo);
-        videoFrame.appendChild(badge);
+        videoFrame.appendChild(gradientOverlay);
         videoWrap.appendChild(videoFrame);
 
         // Function to resize frame based on video aspect ratio and available space
@@ -1008,25 +1444,21 @@
 
           const aspectRatio = videoWidth / videoHeight;
 
-          // Get available space (container minus padding and margin for border visibility)
-          const wrapRect = videoWrap.getBoundingClientRect();
-          const availableWidth = wrapRect.width - 40; // padding + margin for border
-          const availableHeight = wrapRect.height - 40;
+          // Fixed height of 200px, width scales to fill available space (24px margin each side)
+          const fixedHeight = 200;
+          const windowWidth = pipWindow.innerWidth;
+          const availableWidth = windowWidth - 48; // 24px margin on each side
 
-          let frameWidth, frameHeight;
+          // Calculate what width would be at 200px height based on aspect ratio
+          let frameWidth = fixedHeight * aspectRatio;
 
-          // Try filling width first
-          frameWidth = availableWidth;
-          frameHeight = frameWidth / aspectRatio;
-
-          // If height exceeds available, scale down to fit height
-          if (frameHeight > availableHeight) {
-            frameHeight = availableHeight;
-            frameWidth = frameHeight * aspectRatio;
+          // If calculated width exceeds available, use available width
+          if (frameWidth > availableWidth) {
+            frameWidth = availableWidth;
           }
 
           videoFrame.style.width = frameWidth + 'px';
-          videoFrame.style.height = frameHeight + 'px';
+          videoFrame.style.height = fixedHeight + 'px';
         }
 
         // Resize when video metadata loads (gives us dimensions)
@@ -1044,18 +1476,30 @@
         // Resize on window resize
         pipWindow.addEventListener('resize', resizeVideoFrame);
 
-        // Create controls
-        const controls = pipWindow.document.createElement("div");
-        controls.className = "pip-controls";
+        // Create centered recording status overlay on video
+        const statusOverlay = pipWindow.document.createElement("div");
+        statusOverlay.className = "pip-status-overlay";
+        const indicator = pipWindow.document.createElement("div");
+        indicator.className = "pip-toolbar-indicator";
+        const timerEl = pipWindow.document.createElement("span");
+        timerEl.className = "pip-toolbar-timer";
+        timerEl.id = "pipToolbarTimer";
+        timerEl.textContent = "0:00";
+        statusOverlay.appendChild(indicator);
+        statusOverlay.appendChild(timerEl);
+        videoFrame.appendChild(statusOverlay);
 
-        // Create mute button (only if audio enabled)
-        let muteBtn = null;
+        // Create bottom toolbar
+        const toolbar = pipWindow.document.createElement("div");
+        toolbar.className = "pip-toolbar-overlay";
+
+        // Mute button (only if audio enabled)
         if (audioEnabled && micStream) {
-          muteBtn = pipWindow.document.createElement("button");
-          muteBtn.className = "pip-mute-btn";
+          const muteBtn = pipWindow.document.createElement("button");
+          muteBtn.className = "pip-toolbar-btn pip-toolbar-mute-btn";
           muteBtn.title = "Mute microphone";
           muteBtn.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24">
               <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
               <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
               <line x1="12" x2="12" y1="19" y2="22"/>
@@ -1074,7 +1518,7 @@
               muteBtn.classList.add("muted");
               muteBtn.title = "Unmute microphone";
               muteBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24">
                   <line x1="2" x2="22" y1="2" y2="22"/>
                   <path d="M18.89 13.23A7.12 7.12 0 0 0 19 12v-2"/>
                   <path d="M5 10v2a7 7 0 0 0 12 5"/>
@@ -1087,7 +1531,7 @@
               muteBtn.classList.remove("muted");
               muteBtn.title = "Mute microphone";
               muteBtn.innerHTML = `
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24">
                   <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/>
                   <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
                   <line x1="12" x2="12" y1="19" y2="22"/>
@@ -1095,65 +1539,56 @@
               `;
             }
           };
-
-          controls.appendChild(muteBtn);
+          toolbar.appendChild(muteBtn);
         }
 
-        const stopBtn = pipWindow.document.createElement("button");
-        stopBtn.className = "pip-stop-btn";
-        // Set up audio-reactive waveform if audio is enabled
-        let audioContext, analyser, audioAnimationFrame;
+        // "Stop recording" button
+        const doneBtn = pipWindow.document.createElement("button");
+        doneBtn.className = "pip-toolbar-done-btn";
+        doneBtn.innerHTML = `
+          <div class="pip-toolbar-done-icon"></div>
+          <span>Stop recording</span>
+        `;
 
-        // Build button content - icon and text
-        const stopIcon = pipWindow.document.createElement("div");
-        stopIcon.className = "pip-stop-icon";
-        const stopText = pipWindow.document.createElement("span");
-        stopText.textContent = "Stop";
-        stopBtn.appendChild(stopIcon);
-        stopBtn.appendChild(stopText);
-
-        if (audioEnabled) {
-          // Add waveform container to button (will be animated from main window)
-          const waveformDiv = pipWindow.document.createElement("div");
-          waveformDiv.className = "pip-waveform";
-          waveformDiv.id = "pipWaveform";
-          waveformDiv.innerHTML = `
-            <svg viewBox="0 0 100 100" preserveAspectRatio="none">
-              <path id="pipWavePath" d="M0,100 L0,85 Q25,80 50,85 T100,85 L100,100 Z" fill="rgba(255,255,255,0.35)"/>
-            </svg>
-          `;
-          stopBtn.appendChild(waveformDiv);
-          console.log("[Waveform] SVG element added to PIP stop button");
-        }
-        stopBtn.onclick = () => {
+        doneBtn.onclick = () => {
           if (recorder && recorder.state !== "inactive") {
-            stopBtn.disabled = true;
+            doneBtn.disabled = true;
             recorder.stop();
           }
         };
+        toolbar.appendChild(doneBtn);
 
-        controls.appendChild(stopBtn);
-
+        // Add elements to container
         container.appendChild(videoWrap);
-        container.appendChild(controls);
+        container.appendChild(toolbar);
         pipWindow.document.body.appendChild(container);
 
-        // Handle PIP window close
+        // Handle PIP window close - just clean up, don't stop recording
+        // Recording can continue via the preview screen on the recorder tab
         pipWindow.addEventListener("pagehide", () => {
+          console.log(`[PIP pagehide] ${Date.now()} - PIP window closed. Recording continues on main tab.`);
           // Clean up audio analysis
           if (audioAnimationFrame) {
             cancelAnimationFrame(audioAnimationFrame);
+            console.log("[PIP pagehide] Cancelled audio animation frame");
           }
           if (audioContext) {
             audioContext.close().catch(() => {});
-          }
-          // If recording is active, stop it
-          if (recorder && recorder.state !== "inactive") {
-            recorder.stop();
+            console.log("[PIP pagehide] Closed audio context");
           }
           pipWindow = null;
           pipVideo = null;
         });
+
+        // Poll for PIP window closure - just clean up references
+        const pipCloseCheck = setInterval(() => {
+          if (!pipWindow || pipWindow.closed) {
+            clearInterval(pipCloseCheck);
+            console.log(`[PIP poll] ${Date.now()} - PIP window closed. Recording continues on main tab.`);
+            pipWindow = null;
+            pipVideo = null;
+          }
+        }, 200);
 
         // Start playing
         pipVideo.play().catch(err => console.error("PIP video play error:", err));
@@ -1189,29 +1624,72 @@
         recorder.ondataavailable = (e) => {
           if (e.data && e.data.size) {
             recordingChunks.push(e.data);
+            console.log(`[Recorder] ondataavailable: chunk #${recordingChunks.length}, size=${e.data.size}, total chunks=${recordingChunks.length}`);
           }
         };
 
         recorder.onstart = () => {
+          console.log(`[Recorder onstart] ${Date.now()} - Recording started! Timeslice: 400ms`);
           recordingStartTime = performance.now();
           recordingPaused = false;
-          stopRecordingBtn.disabled = false;
-          recordingHint.textContent = "Recording… switch to your tab/app";
+          totalPausedTime = 0;
+          pausedAt = 0;
+
+          // Reset banner state for new recording
+          bannerDismissed = false;
+          tabWasHidden = false;
+          hideReturnBanner();
+
+          // Connect video stream to preview
+          if (recordingPreviewVideo && mainWindowStream) {
+            recordingPreviewVideo.srcObject = mainWindowStream;
+            recordingPreviewVideo.play().catch(err => {
+              console.error("[Recording Preview] Video play error:", err);
+            });
+          }
 
           // Start timer
           recordingTimer = setInterval(updateRecordingTimer, 250);
         };
 
+        recorder.onpause = () => {
+          console.log(`[Recorder onpause] ${Date.now()} - Recording paused`);
+          recordingPaused = true;
+          pausedAt = performance.now();
+        };
+
+        recorder.onresume = () => {
+          console.log(`[Recorder onresume] ${Date.now()} - Recording resumed`);
+          if (pausedAt > 0) {
+            totalPausedTime += performance.now() - pausedAt;
+            pausedAt = 0;
+          }
+          recordingPaused = false;
+        };
+
         recorder.onstop = async () => {
+          console.log(`[Recorder onstop] ${Date.now()} - onstop fired!`);
+          console.log(`[Recorder onstop] Chunks array length: ${recordingChunks?.length}`);
+          console.log(`[Recorder onstop] Chunk sizes:`, recordingChunks?.map((c, i) => `#${i+1}:${c.size}`).join(', '));
+
           if (recordingTimer) {
             clearInterval(recordingTimer);
             recordingTimer = null;
           }
 
           // Build the recording blob
+          const totalSize = recordingChunks?.reduce((sum, c) => sum + c.size, 0) || 0;
+          console.log(`[Recorder onstop] Total chunk data size before Blob: ${totalSize} bytes`);
+
           const blob = new Blob(recordingChunks, { type: recordingChunks[0]?.type || "video/webm" });
+          console.log(`[Recorder onstop] Blob created! Size: ${blob.size} bytes, Type: ${blob.type}`);
+
+          if (blob.size === 0) {
+            console.error("[Recorder onstop] WARNING: Blob is empty! Recording data may be lost.");
+          }
 
           // Close Document PIP window
+          console.log("[Recorder onstop] Closing PIP window...");
           closePipWindow();
 
           // Stop stream tracks
@@ -1236,19 +1714,31 @@
           micStream = null;
 
           // Open review tab and send blob
+          console.log("[Recorder onstop] Opening review tab...");
           openReviewTab();
+          console.log(`[Recorder onstop] Sending blob via BroadcastChannel in 350ms...`);
           setTimeout(() => {
+            console.log(`[Recorder onstop] ${Date.now()} - Posting blob to BroadcastChannel now`);
             bc.postMessage({ type: "recorded-blob", blob });
+            console.log("[Recorder onstop] Blob posted to BroadcastChannel");
           }, 350);
 
-          // Reset UI
-          stopRecordingBtn.disabled = false;
-          recordingTimerEl.textContent = "00:00";
-          recordingHint.textContent = "Recording complete — review tab opened";
+          // Clean up preview video
+          if (recordingPreviewVideo) {
+            recordingPreviewVideo.pause();
+            recordingPreviewVideo.srcObject = null;
+          }
 
-          // Show start controls again
-          startControlsDiv.style.display = "";
-          modeSelectorsDiv.style.display = "";
+          // Reset preview timer
+          if (recordingPreviewTimer) {
+            recordingPreviewTimer.textContent = "00:00";
+          }
+
+          // Hide return banner
+          hideReturnBanner();
+
+          // Show start card again
+          startCardDiv.style.display = "";
           recordingControls.style.display = "none";
 
           // Cleanup
@@ -1256,14 +1746,20 @@
           recordingChunks = [];
           recordingPaused = false;
           recordingStartTime = 0;
+          totalPausedTime = 0;
+          pausedAt = 0;
         };
 
         recorder.onerror = (e) => {
-          console.error("Recorder error:", e);
+          console.error(`[Recorder onerror] ${Date.now()} - Error occurred!`, e);
+          console.error("[Recorder onerror] Error details:", e.error);
+          console.error(`[Recorder onerror] Recorder state: ${recorder?.state}, Chunks so far: ${recordingChunks?.length}`);
           showToast("Recording error: " + (e.error?.message || "Unknown error"));
         };
 
+        console.log(`[Recorder] ${Date.now()} - Calling recorder.start(400)...`);
         recorder.start(400); // timeslice for chunking
+        console.log(`[Recorder] recorder.start() called, state is now: ${recorder.state}`);
       } catch (err) {
         console.error("Error starting recording:", err);
         showToast("Error starting recording: " + err.message);
@@ -1276,24 +1772,30 @@
     let recordingPaused = false;
     let recordingTimer = null;
     let recordingStartTime = 0;
+    let pausedAt = 0;
+    let totalPausedTime = 0;
 
     const recordingControls = document.getElementById("recordingControls");
-    const stopRecordingBtn = document.getElementById("stopRecordingBtn");
-    const recordingTimerEl = document.getElementById("recordingTimer");
-    const recordingHint = document.getElementById("recordingHint");
-    const startControlsDiv = document.querySelector(".start-controls");
-    const modeSelectorsDiv = document.querySelector(".mode-selectors");
+    const recordingPreviewVideo = document.getElementById("recordingPreviewVideo");
+    const recordingPreviewTimer = document.getElementById("recordingPreviewTimer");
+    const recordingPreviewStopBtn = document.getElementById("recordingPreviewStopBtn");
+    const startCardDiv = document.querySelector(".start-card");
 
     function updateRecordingTimer() {
       if (recordingStartTime > 0 && !recordingPaused) {
-        const elapsed = (performance.now() - recordingStartTime) / 1000;
+        const currentPausedTime = pausedAt > 0 ? (performance.now() - pausedAt) : 0;
+        const elapsed = (performance.now() - recordingStartTime - totalPausedTime - currentPausedTime) / 1000;
         const timeStr = fmtTime(elapsed);
-        recordingTimerEl.textContent = timeStr;
 
-        // Also update PIP window timer if open
+        // Update preview timer
+        if (recordingPreviewTimer) {
+          recordingPreviewTimer.textContent = timeStr;
+        }
+
+        // Also update PIP window toolbar timer if open
         if (pipWindow) {
-          const pipTimerEl = pipWindow.document.getElementById("pipTimer");
-          if (pipTimerEl) pipTimerEl.textContent = timeStr;
+          const pipToolbarTimer = pipWindow.document.getElementById("pipToolbarTimer");
+          if (pipToolbarTimer) pipToolbarTimer.textContent = timeStr;
         }
       }
     }
@@ -1368,8 +1870,7 @@
         }
 
         // Auto-start recording when PIP opens
-        startControlsDiv.style.display = "none";
-        modeSelectorsDiv.style.display = "none";
+        startCardDiv.style.display = "none";
         recordingControls.style.display = "block";
         startRecording();
 
@@ -1531,8 +2032,7 @@
 
           // Reset UI
           recordingControls.style.display = "none";
-          startControlsDiv.style.display = "";
-          modeSelectorsDiv.style.display = "";
+          startCardDiv.style.display = "";
         });
 
       } catch (err) {
@@ -1544,14 +2044,15 @@
       }
     };
 
-    // Stop button handler (main page fallback)
-    stopRecordingBtn.onclick = () => {
-      if (recorder && recorder.state !== "inactive") {
-        stopRecordingBtn.disabled = true;
-        recordingHint.textContent = "Stopping recording…";
-        recorder.stop();
-      }
-    };
+    // Stop button handler (preview screen)
+    if (recordingPreviewStopBtn) {
+      recordingPreviewStopBtn.onclick = () => {
+        if (recorder && recorder.state !== "inactive") {
+          recordingPreviewStopBtn.disabled = true;
+          recorder.stop();
+        }
+      };
+    }
 
 
     // initial status
@@ -1617,20 +2118,20 @@
     function stopTimer(){
       if (tick) clearInterval(tick);
       tick = null;
-      timerEl.textContent = "00:00";
+      timerEl.textContent = "0:00";
     }
 
     // Listen for messages from main window via BroadcastChannel
     bc.onmessage = (e) => {
       const m = e.data || {};
-      
+
       if (m.type === "stream-ready") {
         streamReady = true;
         startBtn.disabled = false;
         setStatus("idle", "Stream ready — click Start to record");
         hint.textContent = "Preview is in the native PIP window above";
       }
-      
+
       if (m.type === "recording-started") {
         setStatus("live", "Recording…");
         startBtn.disabled = true;
@@ -1639,21 +2140,21 @@
         startTimer();
         hint.textContent = "Recording active — switch to your tab/app";
       }
-      
+
       if (m.type === "recording-paused") {
         paused = true;
         pauseBtn.textContent = "Resume";
         setStatus("live", "Paused");
         hint.textContent = "Recording paused";
       }
-      
+
       if (m.type === "recording-resumed") {
         paused = false;
         pauseBtn.textContent = "Pause";
         setStatus("live", "Recording…");
         hint.textContent = "Recording active";
       }
-      
+
       if (m.type === "recording-stopped") {
         stopTimer();
         setStatus("done", "Recording complete");
@@ -1664,7 +2165,7 @@
         paused = false;
         hint.textContent = "Review tab should open automatically";
       }
-      
+
       if (m.type === "stream-ended" || m.type === "pip-closed") {
         streamReady = false;
         stopTimer();
@@ -1731,6 +2232,7 @@
             <div class="video-section">
               <div class="video-player-wrap" id="videoPlayerWrap">
                 <video id="player" playsinline></video>
+                <div class="video-gradient-overlay"></div>
                 <div class="video-overlay" id="videoOverlay">
                   <button class="play-btn" id="playBtn">
                     <svg width="45" height="56" viewBox="0 0 45 56" fill="none">
@@ -1846,7 +2348,6 @@
         objectUrl = URL.createObjectURL(receivedBlob);
         player.src = objectUrl;
         submitBtn.disabled = false;
-        showToast("Recording received — click play to review");
       }
     };
 
@@ -1885,6 +2386,17 @@
     // Ask other windows for the most recent blob (nice for refresh cases)
     setTimeout(()=> bc.postMessage({type:"review-ready"}), 100);
     return;
+  }
+  } catch (error) {
+    console.error("Error initializing app:", error);
+    const app = document.getElementById("app");
+    if (app) {
+      app.innerHTML = `<div style="padding: 40px; text-align: center; color: var(--text, #e9ecf1);">
+        <h2>Error loading application</h2>
+        <p style="color: var(--muted, #aab2c2);">${error.message}</p>
+        <p style="margin-top: 20px; font-size: 12px; color: var(--muted, #aab2c2);">Check the browser console for details.</p>
+      </div>`;
+    }
   }
 })();
 </script>
